@@ -59,7 +59,32 @@ public class C206_CaseStudyTest {
 			C206_CaseStudy.addCategory(categoryList, c2);
 			assertEquals("Test that category arraylist size is 2?", 2, categoryList.size());
 		}
-	
+		
+		
+		
+		public void testRetrieveAllCategory() {
+			
+			assertNotNull("Test if there is valid Camcorder arraylist to add to", categoryList);
+			
+			
+					String allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+					String testOutput = "";
+					assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
+					
+			
+			C206_CaseStudy.addCamcorder(categoryList, c1);
+			C206_CaseStudy.addCamcorder(categoryList, c2);
+			assertEquals("Test if that Camcorder arraylist size is 2?", 2, categoryList.size());
+			
+			
+			allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+
+			testOutput = String.format("%-10s  %-10s \n","CC001", "Western");
+			testOutput += String.format("%-10s  %-10s \n","CC002", "Asian");
+		
+			assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
+			
+		}
 	}
 
 
