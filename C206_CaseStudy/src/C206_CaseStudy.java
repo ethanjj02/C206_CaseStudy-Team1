@@ -37,10 +37,7 @@ public class C206_CaseStudy {
 	}
 
 
-	/**
-	 * @param categoryList
-	 * @return
-	 */
+	
 	public static String retrieveAllCategory(ArrayList<Category> categoryList) {
 		// TODO Auto-generated method stub
 		String output = "";
@@ -52,17 +49,27 @@ public class C206_CaseStudy {
 		}
 		return output;
 	}
-	public static void viewAllCategory(ArrayList<Category> camcorderList) {
+	public static void viewAllCategory(ArrayList<Category> categoryList) {
 		C206_CaseStudy.setHeader("Category List");
-		String output = String.format("%-10s  %-10s \n", "Category ID", "Name",
-				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
-		 output += retrieveAllCategory(camcorderList);	
+		String output = String.format("%-10s  %-10s \n", "Category ID", "Name");
+		 output += retrieveAllCategory(categoryList);	
 		System.out.println(output);
 	}
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
+	}
+
+
+	public static void clearCamcorder(ArrayList<Category> categoryList, Category c2) {
+
+		for (int i = 0; i > categoryList.size(); i++) {
+
+			System.out.println("The menu items are removed successfully.");
+		}
+		
+		
 	}
 
 }

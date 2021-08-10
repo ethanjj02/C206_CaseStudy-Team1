@@ -85,6 +85,27 @@ public class C206_CaseStudyTest {
 			assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
 			
 		}
+		
+          public void testDeleteAllCategory() {
+			
+			assertNotNull("Test if there is valid Camcorder arraylist to add to", categoryList);
+			
+			
+					String allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+					String testOutput = "";
+					assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
+					
+			
+			C206_CaseStudy.clearCamcorder(categoryList, c1);
+			C206_CaseStudy.clearCamcorder(categoryList, c2);
+			assertEquals("Test if that Camcorder arraylist size is 0?", 0, categoryList.size());
+			
+			
+			allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+		
+			assertEquals("Check that DeletAllCategory", testOutput, allCategory);
+			
+		}
 	}
 
 
