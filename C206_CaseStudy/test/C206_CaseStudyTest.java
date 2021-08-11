@@ -7,28 +7,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-	private Category c1;
-	private Category c2;
-	private Category c3;
+	private Menu d1;
+	private Menu d2;
+
+	private ArrayList<Menu> menuList;
 	
-	
-	private ArrayList<Category> categoryList;
-	
-	
+
 	@Before
 	public void setUp() throws Exception {
 		// prepare test data
-		c1 = new Category("CC001", "Western");
-		c2 = new Category("CC002", "Asian");
-		c3 = new Category("CC003", "Vegetarian");
-		
-		
+		d1 = new Menu(1, "Monday");
+		d2 = new Menu(2, "Tuesday");
 
-		categoryList= new ArrayList<Category>();
-		
+		menuList = new ArrayList<Menu>();
+
 	}
-
-
 
 	@After
 	public void tearDown() throws Exception {
@@ -36,76 +29,50 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void c206_test() {
-		//fail("Not yet implemented"); 
-		assertTrue("C206_CaseStudy_SampleTest ",true);
+		// fail("Not yet implemented");
+		assertTrue("C206_CaseStudy_SampleTest ", true);
 	}
+
+	@Test
+	public void createMenu() {
+
+		assertEquals("Test that the list is null before creating the menu", 0,menuList.size());
+		
+		assertNotNull("Test that the list is not null before creating the menu",menuList.size());
+		
+		C206_CaseStudy.createMenu(menuList, d1);
+		assertEquals("Test if that menu arraylist size is 1?", 1, menuList.size());
+
+
+		
+	}
+
+	public void viewMenu() {
+
+		assertNotNull("Test if the menu list is not empty", menuList);
+		
+		assertEquals("Test that the size of list is 1 when user view it", 1, menuList.size());
+		
+
+		assertTrue("No available menu", menuList.isEmpty());
+
+	}
+
+	public void deleteMenu() {
 		
 		
+		
+		assertEquals("Test if that menu arraylist size is 0?", 0, menuList.size());
 		
 	
-		@Test
-		public void testAddCategory() {
-			
-			assertNotNull("Test if there is valid category arraylist to add to", categoryList);
-					
-			
-			C206_CaseStudy.addCategory(categoryList, c1);						
-			assertEquals("Test if that category arraylist size is 1?", 1, categoryList.size());
-			
-			
-			assertSame("Test that category is added same as 1st item of the list?", c1, categoryList.get(0));
-					
-			
-			C206_CaseStudy.addCategory(categoryList, c2);
-			assertEquals("Test that category arraylist size is 2?", 2, categoryList.size());
-		}
-		
-		
-		
-		public void testRetrieveAllCategory() {
-			
-			assertNotNull("Test if there is valid Camcorder arraylist to add to", categoryList);
-			
-			
-					String allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
-					String testOutput = "";
-					assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
-					
-			
-			C206_CaseStudy.addCamcorder(categoryList, c1);
-			C206_CaseStudy.addCamcorder(categoryList, c2);
-			assertEquals("Test if that Camcorder arraylist size is 2?", 2, categoryList.size());
-			
-			
-			allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+		String allMenu = C206_CaseStudy.viewMenu(menuList);
+		String testOutput = "";
+		assertEquals("No available menu", testOutput, allMenu);
 
-			testOutput = String.format("%-10s  %-10s \n","CC001", "Western");
-			testOutput += String.format("%-10s  %-10s \n","CC002", "Asian");
 		
-			assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
-			
-		}
-		
-          public void testDeleteAllCategory() {
-			
-			assertNotNull("Test if there is valid Camcorder arraylist to add to", categoryList);
-			
-			
-					String allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
-					String testOutput = "";
-					assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
-					
-			
-			C206_CaseStudy.clearCamcorder(categoryList, c1);
-			C206_CaseStudy.clearCamcorder(categoryList, c2);
-			assertEquals("Test if that Camcorder arraylist size is 0?", 0, categoryList.size());
-			
-			
-			allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
-		
-			assertEquals("Check that DeletAllCategory", testOutput, allCategory);
-			
-		}
+
+		assertEquals("The menu is not deleted successfully", 1, menuList.size());
+
 	}
 
-
+}

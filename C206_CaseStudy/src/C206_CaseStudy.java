@@ -1,75 +1,95 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	 ArrayList<Category> categoryList = new ArrayList<Category>();
-	
-	
-		categoryList.add(new Category("CC001", "Western"));
-		categoryList.add(new Category("CC002", "Asian"));
-		categoryList.add(new Category("CC003", "Vegetarian"));
-		
-		
+		ArrayList<Menu> menuList = new ArrayList<Menu>();
 
-	}
+		menuList.add(new Menu(1, "Monday"));
+		menuList.add(new Menu(2, "Tuesday"));
+		menuList.add(new Menu(3, "Wednesday"));
+		menuList.add(new Menu(4, "Thursday"));
+		menuList.add(new Menu(5, "Friday"));
 
-	
-	public static Category inputCategory() {
-		String ID = Helper.readString("Enter asset tag > ");
-		String Name = Helper.readString("Enter description > ");
-		
+		int option = 0;
 
-		Category cc= new Category(ID, Name);
-		return cc;
-		
-	}
-	public static void addCamcorder(ArrayList<Category> camcorderList, Category cc) {
-		
-		camcorderList.add(cc);
-		System.out.println("Category added");
-	}
+		while (option != 5) {
 
-	public static void addCategory(ArrayList<Category> categoryList, Category c1) {
-		// TODO Auto-generated method stub
-		
-	}
+			C206_CaseStudy.menu();
+			option = Helper.readInt("Enter an option > ");
 
-
-	
-	public static String retrieveAllCategory(ArrayList<Category> categoryList) {
-		// TODO Auto-generated method stub
-		String output = "";
-
-		for (int i = 0; i < categoryList.size(); i++) {
-
-			output += String.format("%-10s %-10s\n", categoryList.get(i).getCategoryID(),
-					categoryList.get(i).getCategoryName());
+			if (option == 1) {
+				createMenu(menuList, null);
+			} else if (option == 2) {
+				viewMenu(menuList);
+			} else if (option == 3) {
+				deleteMenu(menuList, null);
+			} else if (option == 4)
+				System.out.println("Bye!");
+			else {
+				System.out.println("Invalid option");
+			}
 		}
-		return output;
+
 	}
-	public static void viewAllCategory(ArrayList<Category> categoryList) {
-		C206_CaseStudy.setHeader("Category List");
-		String output = String.format("%-10s  %-10s \n", "Category ID", "Name");
-		 output += retrieveAllCategory(categoryList);	
-		System.out.println(output);
+
+	public static void menu() {
+		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
+		System.out.println("1. Create Monthly Menu");
+		System.out.println("2. View Monthly Menu");
+		System.out.println("3. Delete Monthly Menu");
+		System.out.println("4. Quit");
+		Helper.line(80, "-");
+
 	}
+
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
 
+	public static void createMenu(ArrayList<Menu> menuList, Menu d1) {
 
-	public static void clearCamcorder(ArrayList<Category> categoryList, Category c2) {
-
-		for (int i = 0; i > categoryList.size(); i++) {
-
-			System.out.println("The menu items are removed successfully.");
-		}
-		
-		
+		menuList.add(d1);
+		System.out.println("Menu created");
 	}
 
-}
+	public static void addCategory(ArrayList<Category> categoryList, Category c1) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static String viewMenu(ArrayList<Menu> menuList) {
+		// TODO Auto-generated method stub
+
+		String output = "";
+
+		for (int i = 0; i < menuList.size(); i++) {
+
+			output += String.format("%-10s %-10s\n", menuList.get(i).getMonth(), menuList.get(i).getName());
+		}
+		return output;
+	}
+
+	public static boolean deleteMenu(ArrayList<Menu> menuList, String name) {
+		boolean isFound = false;
+
+		String checkName = Helper.readString("Enter name of the menu: ");
+		for (int i = 0; i < menuList.size(); i++) {
+			String menuName = menuList.get(i).getName();
+			if (checkName.equalsIgnoreCase(menuName)) {
+				isFound = true;
+				menuList.remove(i);
+				System.out.println(menuName + "menu has been deleted successfully.");
+			}
+
+		}
+		if (isFound == false) {
+			System.out.println("Invalid name");
+		}
+		return isFound;
+	}
+
+}// end of class
