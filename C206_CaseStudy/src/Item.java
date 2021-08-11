@@ -8,45 +8,61 @@
  */
 
 public class Item {
-	private String itemID;
-	private String mealType;
-	private String drink;
-	private String fruits;
+	private String ItemID ;
+	private String Category;
+	private String Name;
+	private double Price;
 	
-	public Item(String itemID, String mealType, String drink, String fruits) {
+	public Item(String itemID, String category, String name, double price) {
 		
-		this.itemID = itemID;
-		this.mealType = mealType;
-		this.drink = drink;
-		this.fruits = fruits;
+		ItemID = itemID;
+		Category = category;
+		Name = name;
+		Price = price;
+		
 	}
 
-	public String getMealType() {
-		return mealType;
-	}
-
-	public void setMealType(String mealType) {
-		this.mealType = mealType;
-	}
-
-	public String getDrink() {
-		return drink;
-	}
-
-	public void setDrink(String drink) {
-		this.drink = drink;
-	}
-
-	public String getFruits() {
-		return fruits;
-	}
-
-	public void setFruits(String fruits) {
-		this.fruits = fruits;
-	}
-
+	
 	public String getItemID() {
-		return itemID;
+		return ItemID;
 	}
 
+	
+	public void setItemID(String itemID) {
+		ItemID = itemID;
+	}
+
+
+	public String getCategory() {
+		return Category;
+	}
+
+	
+	public void setCategory(String category) {
+		Category = category;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public double getPrice() {
+		return Price;
+	}
+
+	public void setPrice(int price) {
+		Price = price;
+	}
+	
+	
+	
+	
+	
+	
+	
 }

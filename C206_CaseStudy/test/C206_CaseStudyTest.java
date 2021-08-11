@@ -7,24 +7,26 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-	private Category c1;
-	private Category c2;
-	private Category c3;
 	
 	
-	private ArrayList<Category> categoryList;
+	private Item i1;
+	private Item i2;
+	private Item i3;
+	
+	
+	private ArrayList<Item> itemList;
 	
 	
 	@Before
 	public void setUp() throws Exception {
 		// prepare test data
-		c1 = new Category("CC001", "Western");
-		c2 = new Category("CC002", "Asian");
-		c3 = new Category("CC003", "Vegetarian");
+		
+		i1 = new Item("IT001", "Western","Spaghetti",3.50);
+		i2 = new Item("IT002", "Asian", "Fride rice",3.50);
+		i3 = new Item("IT003", "Vegetarian","Vegetarian Bee Hoon",3.00);
 		
 		
-
-		categoryList= new ArrayList<Category>();
+		itemList = new ArrayList<Item>();
 		
 	}
 
@@ -44,64 +46,62 @@ public class C206_CaseStudyTest {
 		
 	
 		@Test
-		public void testAddCategory() {
+		public void testAddItem() {
 			
-			assertNotNull("Test if there is valid category arraylist to add to", categoryList);
+			assertNotNull("Test if there is valid category arraylist to add to", itemList);
 					
 			
-			C206_CaseStudy.addCategory(categoryList, c1);						
-			assertEquals("Test if that category arraylist size is 1?", 1, categoryList.size());
+			C206_CaseStudy.addItem(itemList, i1);						
+			assertEquals("Test if that category arraylist size is 1?", 1, itemList.size());
 			
 			
-			assertSame("Test that category is added same as 1st item of the list?", c1, categoryList.get(0));
+			assertSame("Test that category is added same as 1st item of the list?", i1, itemList.get(0));
 					
 			
-			C206_CaseStudy.addCategory(categoryList, c2);
-			assertEquals("Test that category arraylist size is 2?", 2, categoryList.size());
+			C206_CaseStudy.addItem(itemList, i2);
+			assertEquals("Test that category arraylist size is 2?", 2, itemList.size());
 		}
 		
 		
 		
-		public void testRetrieveAllCategory() {
+		public void testRetrieveAllItem() {
 			
-			assertNotNull("Test if there is valid Camcorder arraylist to add to", categoryList);
+			assertNotNull("Test if there is valid Camcorder arraylist to add to", itemList);
 			
 			
-					String allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+					String allItem = C206_CaseStudy.retrieveAllItem(itemList);
 					String testOutput = "";
-					assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
+					assertEquals("Check that ViewAllItemList", testOutput, allItem);
 					
 			
-			C206_CaseStudy.addCamcorder(categoryList, c1);
-			C206_CaseStudy.addCamcorder(categoryList, c2);
-			assertEquals("Test if that Camcorder arraylist size is 2?", 2, categoryList.size());
+			C206_CaseStudy.addItem(itemList, i1);
+			C206_CaseStudy.addItem(itemList, i2);
+			assertEquals("Test if that Camcorder arraylist size is 2?", 2, itemList.size());
 			
 			
-			allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+			allItem= C206_CaseStudy.retrieveAllItem(itemList);
 
-			testOutput = String.format("%-10s  %-10s \n","CC001", "Western");
-			testOutput += String.format("%-10s  %-10s \n","CC002", "Asian");
+			testOutput = String.format("%-10s %-10s %-10s %-20d\n","IT001", "Western","Spaghetti",3.50);
+			testOutput += String.format("%-10s %-10s %-10s %-20d\n", "IT002", "Asian", "Fride rice",3.50);
 		
-			assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
+			assertEquals("Check that ViewAllCamcorderlist", testOutput, allItem);
 			
 		}
 		
           public void testDeleteAllCategory() {
 			
-			assertNotNull("Test if there is valid Camcorder arraylist to add to", categoryList);
+			assertNotNull("Test if there is valid Camcorder arraylist to add to", itemList);
 			
 			
-					String allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+					String allCategory= C206_CaseStudy.retrieveAllItem(itemList);
 					String testOutput = "";
 					assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
 					
 			
-			C206_CaseStudy.clearCamcorder(categoryList, c1);
-			C206_CaseStudy.clearCamcorder(categoryList, c2);
-			assertEquals("Test if that Camcorder arraylist size is 0?", 0, categoryList.size());
+			assertEquals("Test if that Camcorder arraylist size is 0?", 0, itemList.size());
 			
 			
-			allCategory= C206_CaseStudy.retrieveAllCategory(categoryList);
+			allCategory= C206_CaseStudy.retrieveAllItem(itemList);
 		
 			assertEquals("Check that DeletAllCategory", testOutput, allCategory);
 			
